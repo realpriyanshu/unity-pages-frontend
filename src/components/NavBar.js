@@ -1,7 +1,9 @@
 import React from 'react';
-import { AppBar, Toolbar, Typography, Button, Box } from '@mui/material';
+import { AppBar, Toolbar, Typography, Button, Box ,IconButton } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
+import folderDownloadIcon from './icons8-download-26.png';
+
 import jsPDF from 'jspdf'; // Import jsPDF is a library which is used to convert html txt image etc to pdf
 import html2canvas from 'html2canvas'; // Import  html2canvas is a JavaScript library that allows you to take "screenshots" of webpages or parts of webpages directly in the browser. It does this by rendering the DOM of the specified HTML element to a canvas element, which can then be used to generate an image.
 
@@ -24,10 +26,10 @@ const ExportButton = styled(Button)(({ theme }) => ({
     fontSize: '0.75rem', // Smaller font size
     padding: '4px 8px', // Smaller padding
     marginRight: theme.spacing(2), // Add margin to the right
-    backgroundColor: '#3f51b5', // Custom background color
-    color: '#fff', // White text color
+    backgroundColor: 'transparent', // Transparent background color
+    color: '#3f51b5', // Blue text color
     '&:hover': {
-        backgroundColor: '#303f9f', // Darker background on hover
+        backgroundColor: 'rgba(63, 81, 181, 0.1)', // Slightly blue background on hover
     },
 }));
 
@@ -52,7 +54,9 @@ const NavBar = () => {
                     UnityPages
                 </TitleTypography>
                 <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                    <ExportButton onClick={exportPDF} variant="contained">Export as PDF</ExportButton>
+                    <ExportButton onClick={exportPDF} variant="contained">   <IconButton edge="start">
+                            <img src={folderDownloadIcon} alt="Export" style={{ width: 24, height: 24 }} />
+                        </IconButton></ExportButton>
                     <Button
                         color="inherit"
                         component={Link}
